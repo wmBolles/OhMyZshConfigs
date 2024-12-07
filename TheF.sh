@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+sh ./DarkMode.sh
+
 ZSHRC_PATH=$(cd ~ && echo "$PWD/.zshrc")
 
 if [ ! -f "$ZSHRC_PATH" ]; then
