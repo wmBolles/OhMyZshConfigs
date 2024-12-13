@@ -8,6 +8,15 @@ if [ ! -f "$ZSHRC_PATH" ]; then
   touch "$ZSHRC_PATH"
 fi
 
+mode=$(osascript -e 'tell application "System Events" to get the value of dark mode of appearance preferences')
+
+if [ "$mode" != "true" ]; then
+    osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+    echo "Dark mode has been enabled..."
+else
+    echo "Dark mode is already enabled!"
+fi
+
 ALIASES_CONTENT=$(cat <<'EOF'
 date "+%T"
 printf "\033[1;33m
