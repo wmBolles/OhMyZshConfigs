@@ -6,7 +6,7 @@
 #    By: wabolles <wabolles@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/07 10:42:39 by wabolles          #+#    #+#              #
-#    Updated: 2025/01/07 11:14:58 by wabolles         ###   ########.fr        #
+#    Updated: 2025/01/07 11:36:14 by wabolles         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,10 @@
 
 if [ ! -x ./settings/DarkMode.sh ]; then
   chmod +x ./settings/DarkMode.sh
+fi
+
+if [ ! -x ./settings/NightLight.sh ]; then
+  chmod +x ./settings/NightLight.sh
 fi
 
 zshrc_path=$(cd ~ && echo "$PWD/.zshrc")
@@ -32,7 +36,8 @@ printf "\033[1;33m
 
 \033[0m"
 cd /home/wabolles/Desktop
-zsh settings/DarkMode.sh
+bash settings/DarkMode.sh
+bash settings/NightLight.sh
 alias c=clear
 alias m=make
 alias mc="make clean"
