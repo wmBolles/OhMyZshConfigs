@@ -16,3 +16,5 @@ cd OhMyZshConfigs/
 git checkout 485452e708070ce8aa00c5de016f4732265d05bd
 chmod +x TheF.sh && bash TheF.sh
 ```
+
+![ScreenShot](./image.png)

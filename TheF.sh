@@ -6,7 +6,7 @@
 #    By: wabolles <wabolles@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/07 10:42:39 by wabolles          #+#    #+#              #
-#    Updated: 2025/01/07 11:36:14 by wabolles         ###   ########.fr        #
+#    Updated: 2025/01/07 12:18:16 by wabolles         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ printf "\033[1;33m
 
 \033[0m"
 cd /home/wabolles/Desktop
-bash settings/DarkMode.sh
-bash settings/NightLight.sh
+bash ~/Desktop/zshc/settings/DarkMode.sh
+bash ~/Desktop/zshc/settings/NightLight.sh
 alias c=clear
 alias m=make
 alias mc="make clean"
