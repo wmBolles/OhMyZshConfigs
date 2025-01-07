@@ -1,23 +1,28 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    TheF.sh                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: wabolles <wabolles@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/07 10:42:39 by wabolles          #+#    #+#              #
+#    Updated: 2025/01/07 11:14:58 by wabolles         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #!/bin/zsh
 
-sh ./DarkMode.sh
-
-ZSHRC_PATH=$(cd ~ && echo "$PWD/.zshrc")
-
-if [ ! -f "$ZSHRC_PATH" ]; then
-  touch "$ZSHRC_PATH"
+if [ ! -x ./settings/DarkMode.sh ]; then
+  chmod +x ./settings/DarkMode.sh
 fi
 
-mode=$(osascript -e 'tell application "System Events" to get the value of dark mode of appearance preferences')
+zshrc_path=$(cd ~ && echo "$PWD/.zshrc")
 
-if [ "$mode" != "true" ]; then
-    osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-    echo "Dark mode has been enabled..."
-else
-    echo "Dark mode is already enabled!"
+if [ ! -f "$zshrc_path" ]; then
+  touch "$zshrc_path"
 fi
 
-ALIASES_CONTENT=$(cat <<'EOF'
+aliases=$(cat <<'EOF'
 date "+%T"
 printf "\033[1;33m
   |    |  |               __ __| |           __|    |
@@ -26,9 +31,8 @@ printf "\033[1;33m
                   ___/
 
 \033[0m"
-
-cd /Users/wabolles/Desktop/
-
+cd /home/wabolles/Desktop
+zsh settings/DarkMode.sh
 alias c=clear
 alias m=make
 alias mc="make clean"
@@ -54,9 +58,21 @@ alias cclean='bash ~/Cleaner_42.sh'
 EOF
 )
 
-if ! grep -q "Custom Aliases and Functions" "$ZSHRC_PATH"; then
-  echo "$ALIASES_CONTENT" >> "$ZSHRC_PATH"
+
+cat <<EOF > ~/set-resolution.sh
+#!/bin/bash
+current_resolution=\$(xrandr | grep "*" | awk '{print \$1}')
+if [ "\$current_resolution" != "3200x1800" ]; then
+  xrandr --output \$(xrandr | grep " connected" | cut -d" " -f1) --mode 3200x1800
+fi
+EOF
+chmod +x ~/set-resolution.sh
+echo "~/set-resolution.sh" >> ~/.profile
+
+
+
+if ! grep -q "Custom Aliases and Functions" "$zshrc_path"; then
+  echo "$aliases" >> "$zshrc_path"
 fi
 
-source "$ZSHRC_PATH"
-
+. "$zshrc_path"
