@@ -6,7 +6,7 @@
 #    By: wabolles <wabolles@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/07 10:42:39 by wabolles          #+#    #+#              #
-#    Updated: 2025/01/07 12:18:16 by wabolles         ###   ########.fr        #
+#    Updated: 2025/01/09 09:04:09 by wabolles         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ printf "\033[1;33m
 cd /home/wabolles/Desktop
 bash ~/Desktop/zshc/settings/DarkMode.sh
 bash ~/Desktop/zshc/settings/NightLight.sh
+alias gamma="xrandr --output eDP --gamma 0.7:0.7:0.7"
 alias c=clear
 alias m=make
 alias mc="make clean"
